@@ -15,12 +15,12 @@ http = Net::HTTP.new(uri.host, uri.port)
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 dict = {
-	"requests" => [
-		{
-			"params" => "query=#{input}&hitsPerPage=5&maxValuesPerFacet=10&page=0&attributesToRetrieve=%5B%22deprecated%22%2C%22description%22%2C%22downloadsLast30Days%22%2C%22githubRepo%22%2C%22homepage%22%2C%22humanDownloadsLast30Days%22%2C%22keywords%22%2C%22license%22%2C%22modified%22%2C%22name%22%2C%22owner%22%2C%22version%22%5D&attributesToHighlight=%5B%22name%22%2C%22description%22%2C%22keywords%22%5D&highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&facets=%5B%22keywords%22%2C%22keywords%22%2C%22owner.name%22%5D&tagFilters=",
-			"indexName" => "npm-search"
-		}
-	]
+  "requests" => [
+    {
+      "params" => "query=#{input}&hitsPerPage=5&maxValuesPerFacet=10&page=0&attributesToRetrieve=%5B%22deprecated%22%2C%22description%22%2C%22downloadsLast30Days%22%2C%22githubRepo%22%2C%22homepage%22%2C%22humanDownloadsLast30Days%22%2C%22keywords%22%2C%22license%22%2C%22modified%22%2C%22name%22%2C%22owner%22%2C%22version%22%5D&attributesToHighlight=%5B%22name%22%2C%22description%22%2C%22keywords%22%5D&highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&facets=%5B%22keywords%22%2C%22keywords%22%2C%22owner.name%22%5D&tagFilters=",
+      "indexName" => "npm-search"
+    }
+  ]
 }
 body = JSON.dump(dict)
 
@@ -55,20 +55,20 @@ req.body = body
 res = http.request(req)
 result = JSON.parse(res.body);
 items = result["results"][0]["hits"].map do |pkg|
-	link = "https://yarnpkg.com/en/package/#{pkg["name"]}"
-	{
-		title: pkg["name"],
-		subtitle: pkg["description"],
-		arg: link,
-		mods: {
-			cmd: {
-				subtitle: "#{pkg["version"]} published at #{DateTime.strptime(pkg["modified"].to_s, '%s').strftime('%Y-%M-%d')} by #{pkg["owner"]["name"]}"
-			}
-		},
-		quicklookurl: link
-	}
+  link = "https://yarnpkg.com/en/package/#{pkg["name"]}"
+  {
+    title: pkg["name"],
+    subtitle: pkg["description"],
+    arg: link,
+    mods: {
+      cmd: {
+        subtitle: "#{pkg["version"]} published at #{DateTime.strptime(pkg["modified"].to_s, '%s').strftime('%Y-%M-%d')} by #{pkg["owner"]["name"]}"
+      }
+    },
+    quicklookurl: link
+  }
 end
 
 puts JSON.generate({
-	items: items
+  items: items
 })
