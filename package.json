@@ -1,6 +1,6 @@
 {
   "name": "alfred-yarn-packages",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Search packages on yarn website",
   "license": "MIT",
   "repository": "yesmeck/alfred-yarn-packages",
@@ -18,7 +18,7 @@
     "preuninstall": "alfy-cleanup"
   },
   "files": [
-    "index.js",
+    "suggest.rb",
     "icon.png",
     "info.plist"
   ],
