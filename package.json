@@ -1,6 +1,6 @@
 {
   "name": "alfred-yarn-packages",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Search packages on yarn website",
   "license": "MIT",
   "repository": "yesmeck/alfred-yarn-packages",
@@ -20,6 +20,7 @@
   "files": [
     "suggest.rb",
     "icon.png",
+    "3046657A-1B68-4C65-8FBB-BF2AC300D00A.png",
     "info.plist"
   ],
   "keywords": [
