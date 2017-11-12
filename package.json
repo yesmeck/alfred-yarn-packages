@@ -1,6 +1,6 @@
 {
   "name": "alfred-yarn-packages",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Search packages on yarn website",
   "license": "MIT",
   "repository": "yesmeck/alfred-yarn-packages",
